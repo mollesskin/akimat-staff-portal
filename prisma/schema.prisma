@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Employee {
+  id         String   @id @default(cuid())
+  fullName   String
+  position   String
+  department String
+  office     String
+  phone      String
+  email      String   @unique
+  avatar     String?
+  createdAt  DateTime @default(now())
+  tasks      Task[]
+}
+
+model Task {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  deadline    DateTime
+  priority    String
+  status      String
+  employeeId  String
+  createdAt   DateTime @default(now())
+  employee    Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+}
