@@ -4,6 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+  url      = env("postgresql://akimat_user:D7ToCCRNDoHz8Hrn1AjzOHG3FH7iWyl8@dpg-d91fjr8js32c739are7g-a.oregon-postgres.render.com/akimat")
 }
 
 model Employee {
